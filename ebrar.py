@@ -6,7 +6,7 @@ from colorama import Fore, Style
 
 
 def generate_maze():
-    maze = [['' for j in range(80)] for i in range(60)]
+    maze = [['0' for j in range(80)] for i in range(60)]
     # Define the obstacle object
     obstacle = '*'
     initial = 'I'
@@ -155,11 +155,11 @@ def print_maze_to_file(maze, filename):
             for j in range(80):
 
                 if (maze[i][j]) == 'P':
-                    file.write(maze[i][j])
+                    file.write(maze[i][j] + ' ')
                 elif maze[i][j] == 'I':
-                    file.write(maze[i][j])
+                    file.write(maze[i][j] + ' ')
                 elif maze[i][j] == 'G':
-                    file.write(maze[i][j])
+                    file.write(maze[i][j] + ' ')
                 else:
                     file.write(maze[i][j] + ' ')
             file.write('\n')
