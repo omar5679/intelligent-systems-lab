@@ -6,7 +6,7 @@ from colorama import Fore, Style
 
 
 def generate_maze():
-    maze = [['0' for j in range(80)] for i in range(60)]
+    maze = [[' ' for j in range(80)] for i in range(60)]
     # Define the obstacle object
     obstacle = '*'
     initial = 'I'
@@ -40,7 +40,7 @@ def generate_maze():
 def update_maze(maze, path):
     for state in path:
         if maze[state[1]][state[0]] != 'I' and maze[state[1]][state[0]] != 'G':
-            maze[state[1]][state[0]] = 'P'
+            maze[state[1]][state[0]] = '+'
 
     return maze
 
@@ -65,6 +65,7 @@ def print_maze(maze):
             else:
                 print(maze[i][j], end=' ')
         print()
+
 
 class AStar:
 
@@ -165,26 +166,23 @@ def print_maze_to_file(maze, filename):
             file.write('\n')
 
 
-
-
-
 def main():
     a_star = AStar()
     maze, init_state, goal_state = generate_maze()
     path = a_star.algorithm(maze, init_state, goal_state)
 
-    #print_maze(maze)
+    # print_maze(maze)
 
     updated_maze = update_maze(maze, path)
     print('\n\n\n')
-    #print_maze(updated_maze)
+    # print_maze(updated_maze)
 
     maze, initial_state, goal_state = generate_maze()
     path = AStar().algorithm(maze, initial_state, goal_state)
     updated_maze = update_maze(maze, path)
-    
 
     print_maze_to_file(updated_maze, 'maze.txt')
+
 
 if __name__ == '__main__':
     main()
