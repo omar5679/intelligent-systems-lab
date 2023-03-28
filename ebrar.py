@@ -45,27 +45,6 @@ def update_maze(maze, path):
     return maze
 
 
-def print_maze(maze):
-    # Print the maze
-    for i in range(60):
-        for j in range(80):
-
-            if (maze[i][j]) == 'P':
-                print(Fore.RED, end='')
-                print(maze[i][j], end=' ')
-                print(Style.RESET_ALL, end='')
-            elif maze[i][j] == 'I':
-                print(Fore.GREEN, end='')
-                print(maze[i][j], end=' ')
-                print(Style.RESET_ALL, end='')
-            elif maze[i][j] == 'G':
-                print(Fore.BLUE, end='')
-                print(maze[i][j], end=' ')
-                print(Style.RESET_ALL, end='')
-            else:
-                print(maze[i][j], end=' ')
-        print()
-
 
 class AStar:
 
